@@ -36,6 +36,8 @@ public class AttackCtrl : MonoBehaviour
 
     void Update()
     {
+
+        //https://www.twblogs.net/a/5cb1e95cbd9eee48d7888fa0
         bool isMoving = false;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -49,7 +51,7 @@ public class AttackCtrl : MonoBehaviour
 
             if (transform.eulerAngles.y >= 0)
             {
-                transform.Rotate(0, -10, 0);
+                transform.Rotate(0, -9, 0);
             }
 
 
