@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class AttackCtrl : MonoBehaviour
 {
-    public GameObject killPerfab;
-    Rigidbody rigidHas;
+    public GameObject killPerfab; // 甮炳
+    Rigidbody rigidHas;  //ъ砰
     public float xSpeed = 0.01f;
     public float ySpeed = 6.5f;
     public float zSpeed = 0.01f;
+    public Animator aniMove; //笆礶
 
-    public Animator aniMove;
-    
+
+
 
     void Start()
     {
@@ -19,11 +20,8 @@ public class AttackCtrl : MonoBehaviour
 
     }
 
+    #region  窱牟采 篟反采+甮ン
 
-    /// <summary>
-    /// 窱牟采  篟反采+甮ン
-    /// </summary>
-    /// <param name="other"></param>
     void OnTriggerStay(Collider other)
     {
 
@@ -33,6 +31,8 @@ public class AttackCtrl : MonoBehaviour
             Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
         }
     }
+
+    #endregion
 
     void Update()
     {
@@ -44,13 +44,33 @@ public class AttackCtrl : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
-             isMoving = true;
-             aniMove.SetInteger("MoveInt", 1);
+            isMoving = true;
+            aniMove.SetInteger("MoveInt", 1);
+
+            if (transform.eulerAngles.y >= 0)
+            {
+                transform.Rotate(0, -10, 0);
+            }
+
 
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
+            isMoving = true;
+            aniMove.SetInteger("MoveInt", 1);
+
+
+            if (transform.eulerAngles.y < 179)
+            {
+                transform.Rotate(0, 10, 0);
+
+            }
+
+
+
+
+
         }
         //if (Input.GetKeyDown(KeyCode.X))          //炊硄甮ン
         //{
@@ -59,8 +79,8 @@ public class AttackCtrl : MonoBehaviour
 
         if (isMoving)
         {
-           if(aniMove.GetInteger("MoveInt") == 0)
-              aniMove.SetInteger("MoveInt", 1);
+            if (aniMove.GetInteger("MoveInt") == 0)
+                aniMove.SetInteger("MoveInt", 1);
         }
         else
         {
