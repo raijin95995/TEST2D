@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class AttackCtrl : MonoBehaviour
 {
-    public GameObject  killPerfab ;
+    public GameObject killPerfab;
     Rigidbody rigidHas;
     public float xSpeed = 0.01f;
     public float ySpeed = 6.5f;
     public float zSpeed = 0.01f;
 
+    public Animator aniMove;
+    
 
     void Start()
     {
         rigidHas = this.gameObject.GetComponent<Rigidbody>();
+
+    }
+
+
+    /// <summary>
+    /// 碰觸到粒子  摧毀粒子+射出物件
+    /// </summary>
+    /// <param name="other"></param>
+    void OnTriggerStay(Collider other)
+    {
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            Destroy(other.gameObject);
+            Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
+        }
     }
 
     void Update()
     {
+        bool isMoving = false;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rigidHas.AddForce(new Vector2(0, ySpeed), ForceMode.Impulse);
@@ -25,53 +44,36 @@ public class AttackCtrl : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
+             isMoving = true;
+             aniMove.SetInteger("MoveInt", 1);
+
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        //if (Input.GetKeyDown(KeyCode.X))          //普通射出物件
+        //{
+        //    Instantiate(killPerfab, this.transform.position, Quaternion.identity);
+        //}
+
+        if (isMoving)
         {
-            Instantiate(killPerfab, this.transform.position , Quaternion.identity);
+           if(aniMove.GetInteger("MoveInt") == 0)
+              aniMove.SetInteger("MoveInt", 1);
         }
-    }
-    //void OnCollisionEnter(Collision collision)
-    //{
-
-
-
-    // if (collision.gameObject.tag == "hikari")
-    //  {
-    //   print(collision.gameObject.tag);
-    //    collision.gameObject.SendMessage("ApplyDamage", 10);
-    //  }
-    // }
-    //Detect collisions between the GameObjects with Colliders attached
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //Check for a match with the specified name on any GameObject that collides with your GameObject
-    // if (collision.gameObject.name == "Particle System")
-    // {
-    //If the GameObject's name matches the one you suggest, output this message in the console
-    //  Debug.Log("碰到光了");
-    // }
-
-    //Check for a match with the specific tag on any GameObject that collides with your GameObject
-    //if (collision.gameObject.tag == "hikari")
-    //{
-    //If the GameObject has the same tag as specified, output this message in the console
-    //   Debug.Log("我是碰到TAG");
-    //}
-    //}
-    void OnTriggerStay(Collider other)
-    {
-        // Destroy everything that leaves the trigger
-        if (Input.GetKey(KeyCode.A))
+        else
         {
-            Destroy(other.gameObject);
-            Instantiate(killPerfab, this.transform.position += new Vector3(0,0,0.01f), Quaternion.identity);
+            if (aniMove.GetInteger("MoveInt") == 1)
+                aniMove.SetInteger("MoveInt", 0);
 
         }
+
+
+
+
+
+
     }
 }
 
