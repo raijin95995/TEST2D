@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hikari
   - kill
+  - ground
   layers:
   - Default
   - TransparentFX
