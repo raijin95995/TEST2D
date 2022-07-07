@@ -10,7 +10,7 @@ public class AttackCtrl : MonoBehaviour
     public float ySpeed = 6.5f;  //跳躍高度
     public float downSpeed = 3.5f;  //下墜速度
     public float zSpeed = 0.01f;   //移動速度
-    public Animator aniMove; //放入動畫
+    public Animator anime; //放入動畫
     bool groundCheck;  //確認是否觸地
 
     #region 跳躍方法
@@ -48,6 +48,8 @@ public class AttackCtrl : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
+            anime.SetTrigger("Attack");
+            
         }
     }
 
@@ -61,6 +63,7 @@ public class AttackCtrl : MonoBehaviour
 
     void Update()
     {
+        //anime.SetInteger("AttackInt", 0);
         bool isMoving = false;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -75,7 +78,7 @@ public class AttackCtrl : MonoBehaviour
         {
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
             isMoving = true;
-            aniMove.SetInteger("MoveInt", 1);
+            anime.SetInteger("MoveInt", 1);
             if (transform.eulerAngles.y >= 0 || transform.eulerAngles.y >= 179)
             {
                 transform.Rotate(0, -180, 0);
@@ -85,7 +88,7 @@ public class AttackCtrl : MonoBehaviour
         {
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
             isMoving = true;
-            aniMove.SetInteger("MoveInt", 1);
+            anime.SetInteger("MoveInt", 1);
             if (transform.eulerAngles.y < 179)
             {
                 transform.Rotate(0, 180, 0);
@@ -100,13 +103,13 @@ public class AttackCtrl : MonoBehaviour
 
         if (isMoving)
         {
-            if (aniMove.GetInteger("MoveInt") == 0)
-                aniMove.SetInteger("MoveInt", 1);
+            if (anime.GetInteger("MoveInt") == 0)
+                anime.SetInteger("MoveInt", 1);
         }
         else
         {
-            if (aniMove.GetInteger("MoveInt") == 1)
-                aniMove.SetInteger("MoveInt", 0);
+            if (anime.GetInteger("MoveInt") == 1)
+                anime.SetInteger("MoveInt", 0);
 
         }
 

@@ -271,7 +271,7 @@ MonoBehaviour:
   ySpeed: 6.5
   downSpeed: 1
   zSpeed: 0.01
-  aniMove: {fileID: 791552279}
+  anime: {fileID: 791552279}
 --- !u!95 &791552279 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9036980633323257398, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
