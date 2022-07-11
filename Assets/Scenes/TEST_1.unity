@@ -5506,6 +5506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2981090da9f7e1546a13ff410ad174b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTime: 1
   monsterHp: 10
   animeMonster: {fileID: 1798417344}
 --- !u!95 &1798417344 stripped
