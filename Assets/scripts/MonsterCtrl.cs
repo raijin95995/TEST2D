@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class MonsterCtrl : MonoBehaviour
 {
+    public float delayTime = 1.0f;
     public int monsterHp = 10;
+    public Animator animeMonster;
 
 
     void Start()
     {
-
+        
     }
 
     void Update()
     {
         if (monsterHp <= 0)
         {
-            Destroy(this.gameObject);
+            animeMonster.SetTrigger("Die");
+            Invoke("MonsterDie", delayTime);
         }
     }
     void OnTriggerEnter(Collider other)
@@ -25,6 +28,11 @@ public class MonsterCtrl : MonoBehaviour
             monsterHp -= 10;
             Destroy(other.gameObject);
         }
+    }
+
+    void MonsterDie()
+    {
+        Destroy(this.gameObject);
     }
 
 }

@@ -10,7 +10,7 @@ public class AttackCtrl : MonoBehaviour
     public float ySpeed = 7.5f;  //跳躍高度
     public float downSpeed = 3.5f;  //下墜速度
     public float zSpeed = 0.01f;   //移動速度
-    public Animator anime; //放入動畫
+    public Animator animePlayer; //放入動畫
     bool groundCheck;  //確認是否觸地
     bool isJumpping; 
 
@@ -39,7 +39,7 @@ public class AttackCtrl : MonoBehaviour
         {
             groundCheck = true;
             isJumpping = false;
-            anime.SetInteger("JumpInt", 0);
+            animePlayer.SetInteger("JumpInt", 0);
         }
     }
     #endregion
@@ -54,7 +54,7 @@ public class AttackCtrl : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
-                anime.SetTrigger("Attack");
+                animePlayer.SetTrigger("Attack");
                 print("攻擊一次");
             }
         }
@@ -75,7 +75,7 @@ public class AttackCtrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             JumpOnGround();
-            anime.SetInteger("JumpInt", 1);
+            animePlayer.SetInteger("JumpInt", 1);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -87,7 +87,7 @@ public class AttackCtrl : MonoBehaviour
         {
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
             isMoving = true;
-            anime.SetInteger("MoveInt", 1);
+            animePlayer.SetInteger("MoveInt", 1);
             if (transform.eulerAngles.y >= 0 || transform.eulerAngles.y >= 179)
             {
                 transform.Rotate(0, -180, 0);
@@ -97,7 +97,7 @@ public class AttackCtrl : MonoBehaviour
         {
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
             isMoving = true;
-            anime.SetInteger("MoveInt", 1);
+            animePlayer.SetInteger("MoveInt", 1);
             if (transform.eulerAngles.y < 179)
             {
                 transform.Rotate(0, 180, 0);
@@ -112,13 +112,13 @@ public class AttackCtrl : MonoBehaviour
 
         if (isMoving)
         {
-            if (anime.GetInteger("MoveInt") == 0)
-                anime.SetInteger("MoveInt", 1);
+            if (animePlayer.GetInteger("MoveInt") == 0)
+                animePlayer.SetInteger("MoveInt", 1);
         }
         else
         {
-            if (anime.GetInteger("MoveInt") == 1)
-                anime.SetInteger("MoveInt", 0);
+            if (animePlayer.GetInteger("MoveInt") == 1)
+                animePlayer.SetInteger("MoveInt", 0);
 
         }
 
