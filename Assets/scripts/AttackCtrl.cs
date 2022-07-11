@@ -7,11 +7,12 @@ public class AttackCtrl : MonoBehaviour
     public GameObject killPerfab; // 放入射出的秒殺物件
     Rigidbody rigidHas;  //抓取剛體
     public float xSpeed = 0.01f;
-    public float ySpeed = 6.5f;  //跳躍高度
+    public float ySpeed = 7.5f;  //跳躍高度
     public float downSpeed = 3.5f;  //下墜速度
     public float zSpeed = 0.01f;   //移動速度
     public Animator anime; //放入動畫
     bool groundCheck;  //確認是否觸地
+    bool isJumpping; 
 
     #region 跳躍方法
     void JumpOnGround()
@@ -27,6 +28,7 @@ public class AttackCtrl : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             groundCheck = false;
+            isJumpping = true;
         }
     }
 
@@ -36,6 +38,8 @@ public class AttackCtrl : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             groundCheck = true;
+            isJumpping = false;
+            anime.SetInteger("JumpInt", 0);
         }
     }
     #endregion
@@ -44,12 +48,15 @@ public class AttackCtrl : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey(KeyCode.A))
+        if (other.gameObject.tag == "hikari")
         {
-            Destroy(other.gameObject);
-            Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
-            anime.SetTrigger("Attack");
-            
+            if (Input.GetKey(KeyCode.A))
+            {
+                Destroy(other.gameObject);
+                Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
+                anime.SetTrigger("Attack");
+                print("攻擊一次");
+            }
         }
     }
 
@@ -68,11 +75,13 @@ public class AttackCtrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             JumpOnGround();
+            anime.SetInteger("JumpInt", 1);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             //Physics.gravity = new Vector3(0, 3.0F, 0);
             rigidHas.AddForce(new Vector2(0, -downSpeed), ForceMode.Force);
+            
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -114,6 +123,7 @@ public class AttackCtrl : MonoBehaviour
         }
 
         #endregion
+
     }
 }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class QTEkill : MonoBehaviour
 {
     public float timer;
-    public float killSpeed = 1f;
+    public float killSpeed = 10f;
     void Start()
     {
 
