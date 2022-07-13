@@ -41,10 +41,7 @@ public class MonsterCtrl : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void OnTriggerEnter(Collision other)
-    {
-        
-    }
+ 
 }
 
 

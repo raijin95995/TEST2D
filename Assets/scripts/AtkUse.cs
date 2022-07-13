@@ -3,7 +3,7 @@ using UnityEngine;
 public class AtkUse : MonoBehaviour
 {
     //public float timer;
-    public float atkSpeed = 0.1f;
+    public float atkSpeed = 0.5f;
     void Start()
     {
 
@@ -18,5 +18,15 @@ public class AtkUse : MonoBehaviour
         //{
         //    Destroy(this.gameObject);
         //}
+        Invoke("DestroyObject", 0.2f);
+
+    }
+    void ShootObject()
+    {
+        this.gameObject.transform.position += new Vector3(0, 0, atkSpeed * Time.deltaTime * 60);
+    }
+   void DestroyObject()
+    {
+        Destroy(this.gameObject);
     }
 }
