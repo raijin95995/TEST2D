@@ -4839,5 +4839,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8751ada735ff2d42b71b5b80fe252a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterMoveUse: {fileID: 6974256910358399957, guid: 4a77f18fa4f4da54d906f498e31a9558, type: 3}
-  Hikaritarget: {fileID: 6979186123109475833, guid: 4a77f18fa4f4da54d906f498e31a9558, type: 3}
+  MonsterTran: {fileID: 6979186123109475833, guid: 4a77f18fa4f4da54d906f498e31a9558, type: 3}

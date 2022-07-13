@@ -14,6 +14,7 @@ public class AttackCtrl : MonoBehaviour
     public Animator animePlayer; //放入動畫
     bool groundCheck;  //確認是否觸地
     bool isJumpping;
+    
 
     #region 跳躍方法
     void JumpOnGround()

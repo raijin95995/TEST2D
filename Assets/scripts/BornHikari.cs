@@ -3,6 +3,9 @@ using UnityEngine;
 public class BornHikari : MonoBehaviour
 {
     public GameObject BornKill ;
+    public Transform monsterTarget;
+    public Transform hikariTarget;
+
     // Start is called before the first frame update
     void Start()
     {
