@@ -27,6 +27,13 @@ public class MonsterCtrl : MonoBehaviour
             monsterHp -= 10;
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag == "atk")
+        {
+            animeMonster.SetTrigger("Hit");
+            Debug.Log("¸I¨ìatk");
+            monsterHp -= 1;
+            Destroy(other.gameObject);
+        }
     }
 
     void MonsterDie()
@@ -34,6 +41,10 @@ public class MonsterCtrl : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    void OnTriggerEnter(Collision other)
+    {
+        
+    }
 }
 
 

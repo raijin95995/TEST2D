@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3321440336429205972}
   - component: {fileID: 8622993058036572676}
   - component: {fileID: 5642439915105188360}
+  - component: {fileID: -6171418129513963458}
   m_Layer: 0
   m_Name: atk use
-  m_TagString: Untagged
+  m_TagString: atk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4880459588146884393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +98,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac61191f90f1e94e8fa52d14723a09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkSpeed: 0.1
+--- !u!65 &-6171418129513963458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880459588146884393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.22, y: 9.5, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
