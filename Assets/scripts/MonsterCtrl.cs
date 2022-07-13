@@ -6,7 +6,6 @@ public class MonsterCtrl : MonoBehaviour
     public int monsterHp = 10;
     public Animator animeMonster;
 
-
     void Start()
     {
         

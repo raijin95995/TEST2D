@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class QTEkill : MonoBehaviour
 {
-    public float timer;
-    public float killSpeed = 10f;
+    //public float timer;
+    public float killSpeed = 0.1f;
     void Start()
     {
 
@@ -13,10 +13,10 @@ public class QTEkill : MonoBehaviour
     void Update()
     {
         this.gameObject.transform.position += new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
-        timer -= Time.deltaTime;
-        if (timer <= 0) 
-        {
-            Destroy(this.gameObject);
-        }
+        //timer -= Time.deltaTime;
+        //if (timer <= 0) 
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 }
