@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killPerfab: {fileID: 6549537168479552028, guid: 67a1806093e61694783cd1caf8fb2010, type: 3}
+  AttackPerfab: {fileID: 4880459588146884393, guid: e869c08d7c677fb4591d67922be1826c, type: 3}
   xSpeed: 0.01
   ySpeed: 7.5
   downSpeed: 2

@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackCtrl : MonoBehaviour
 {
     public GameObject killPerfab; // 放入射出的秒殺物件
+    public GameObject AttackPerfab;
     Rigidbody rigidHas;  //抓取剛體
     public float xSpeed = 0.01f;
     public float ySpeed = 7.5f;  //跳躍高度
@@ -103,10 +104,11 @@ public class AttackCtrl : MonoBehaviour
                 transform.Rotate(0, 180, 0);
             }
         }
-        //if (Input.GetKeyDown(KeyCode.X))          //普通射出物件
-        //{
-        //    Instantiate(killPerfab, this.transform.position, Quaternion.identity);
-        //}
+        if (Input.GetKeyDown(KeyCode.Z))          //普通射出物件
+        {
+            animePlayer.SetTrigger("AttackNormal");
+            Instantiate(AttackPerfab, this.transform.position, Quaternion.identity);
+        }
 
         #region 移動動畫
 
