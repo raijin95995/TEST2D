@@ -12,7 +12,7 @@ public class AttackCtrl : MonoBehaviour
     public float zSpeed = 0.01f;   //移動速度
     public Animator animePlayer; //放入動畫
     bool groundCheck;  //確認是否觸地
-    bool isJumpping; 
+    bool isJumpping;
 
     #region 跳躍方法
     void JumpOnGround()
@@ -81,7 +81,7 @@ public class AttackCtrl : MonoBehaviour
         {
             //Physics.gravity = new Vector3(0, 3.0F, 0);
             rigidHas.AddForce(new Vector2(0, -downSpeed), ForceMode.Force);
-            
+
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
