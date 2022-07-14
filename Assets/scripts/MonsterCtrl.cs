@@ -5,6 +5,8 @@ public class MonsterCtrl : MonoBehaviour
     public float delayTime = 1.0f;
     public int monsterHp = 10;
     public Animator animeMonster;
+    public Transform hikariTarget;
+    public Transform monsterTarget;
 
     void Start()
     {

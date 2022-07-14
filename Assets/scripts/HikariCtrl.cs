@@ -14,7 +14,8 @@ public class HikariCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HikariFollow();
+        Invoke("HikariFollow",1.0f);
+        //HikariFollow();
     }
 
     void MoveHikari()
@@ -24,8 +25,8 @@ public class HikariCtrl : MonoBehaviour
 
     void HikariFollow()
     {
-       this.gameObject.transform.position = monsterTarget.position;
-        MoveHikari();
+        this.gameObject.transform.position = monsterTarget.position;
+       MoveHikari();
 
     }
 
