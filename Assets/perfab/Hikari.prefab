@@ -4839,4 +4839,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8751ada735ff2d42b71b5b80fe252a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterTran: {fileID: 6979186123109475833, guid: 4a77f18fa4f4da54d906f498e31a9558, type: 3}
+  monsterTarget: {fileID: 7139193112080844289, guid: 908ba8834debfa84da26bd38e90b3356, type: 3}
+  hikariTarget: {fileID: 7139193112080844289, guid: 908ba8834debfa84da26bd38e90b3356, type: 3}

@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class HikariCtrl : MonoBehaviour
 {
-    public Transform monsterTarget;
-    public Transform hikariTarget;
+    //public Transform monsterTarget;
+    //public Transform hikariTarget;
 
     // Start is called before the first frame update
     void Start()
     {
-        MoveHikari();
+        //MoveHikari();
+        Invoke("HikariDie", 2.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Invoke("HikariFollow",1.0f);
+        //Invoke("HikariFollow",1.0f);
         //HikariFollow();
+        //Invoke("HikariDie", 1.0f);
     }
 
     void MoveHikari()
@@ -25,9 +27,15 @@ public class HikariCtrl : MonoBehaviour
 
     void HikariFollow()
     {
-        this.gameObject.transform.position = monsterTarget.position;
-       MoveHikari();
+        //this.gameObject.transform.position = hikariTarget.position;
+      //MoveHikari();
 
+    }
+
+    void HikariDie()
+    {
+        Destroy(this.gameObject);
+      
     }
 
 }

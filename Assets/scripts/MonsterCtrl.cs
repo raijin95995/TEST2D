@@ -7,10 +7,13 @@ public class MonsterCtrl : MonoBehaviour
     public Animator animeMonster;
     public Transform hikariTarget;
     public Transform monsterTarget;
+    public GameObject BornKill;
+    public float hikariBornTime;
+    public bool startTime;
 
     void Start()
     {
-        
+        //Instantiate(BornKill, hikariTarget.position, Quaternion.identity);
     }
 
     void Update()
@@ -20,6 +23,20 @@ public class MonsterCtrl : MonoBehaviour
             animeMonster.SetTrigger("Die");
             Invoke("MonsterDie", delayTime);
         }
+
+        if (startTime)
+        {
+            hikariBornTime += Time.deltaTime;
+            if (hikariBornTime >= 3.0f)//
+            {
+                HikariBornB();   //
+                hikariBornTime = 0f;//
+            }
+        }
+        //Invoke("HikariBorn", 3.0f);
+        
+        
+
     }
     void OnTriggerEnter(Collider other)
     {
@@ -43,7 +60,33 @@ public class MonsterCtrl : MonoBehaviour
         Destroy(this.gameObject);
     }
 
- 
+    void HikariDie()
+    {
+        Destroy(BornKill);
+    }
+
+    void HikariBorn()
+    {
+        
+            Invoke("HikariBornB", 1.0f);
+
+            //Instantiate(BornKill, hikariTarget.position, Quaternion.identity);
+        
+        
+        //Invoke("HikariDie", 0.5f);
+
+    }
+    
+    void HikariBornB()
+    {
+        
+            Instantiate(BornKill, hikariTarget.position, Quaternion.identity);
+        
+
+        
+
+    }
+
 }
 
 

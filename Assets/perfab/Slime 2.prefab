@@ -136,6 +136,9 @@ MonoBehaviour:
   animeMonster: {fileID: 7084714450150800323}
   hikariTarget: {fileID: 3497501201547819222}
   monsterTarget: {fileID: 7139193112080844289}
+  BornKill: {fileID: 7261940833387248838, guid: 28d6d4a7357fbaf428e717cbcbeac594, type: 3}
+  hikariBornTime: 0
+  startTime: 1
 --- !u!114 &2260007664363256028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7133991218593261613}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49cf6cd8806ae794eb74aee10a44341f, type: 3}
   m_Name: 
