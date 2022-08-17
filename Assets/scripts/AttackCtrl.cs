@@ -1,9 +1,10 @@
 using UnityEngine;
-
 [RequireComponent(typeof(Rigidbody))]
 
 public class AttackCtrl : MonoBehaviour
 {
+
+    #region 資料
     public GameObject killPerfab; // 放入射出的秒殺物件
     public GameObject AttackPerfab;
     Rigidbody rigidHas;  //抓取剛體
@@ -14,56 +15,11 @@ public class AttackCtrl : MonoBehaviour
     public Animator animePlayer; //放入動畫
     bool groundCheck;  //確認是否觸地
     bool isJumpping;
-    
-
-    #region 跳躍方法
-    void JumpOnGround()
-    {
-        if (groundCheck)
-        {
-            rigidHas.AddForce(new Vector2(0, ySpeed), ForceMode.Impulse);
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "ground")
-        {
-            groundCheck = false;
-            isJumpping = true;
-        }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-
-        if (collision.gameObject.tag == "ground")
-        {
-            groundCheck = true;
-            isJumpping = false;
-            animePlayer.SetInteger("JumpInt", 0);
-        }
-    }
     #endregion
 
-    #region  碰觸到粒子 摧毀粒子+射出物件
 
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "hikari")
-        {
-            if (Input.GetKey(KeyCode.A))
-            {
-                Destroy(other.gameObject);
-                Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
-                animePlayer.SetTrigger("Attack");
-                print("攻擊一次");
-            }
-        }
-    }
 
-    #endregion
-
+    #region 事件
     void Start()
     {
         rigidHas = this.gameObject.GetComponent<Rigidbody>();
@@ -111,6 +67,10 @@ public class AttackCtrl : MonoBehaviour
             Instantiate(AttackPerfab, this.transform.position, Quaternion.identity);
         }
 
+
+
+
+
         #region 移動動畫
 
         if (isMoving)
@@ -128,6 +88,61 @@ public class AttackCtrl : MonoBehaviour
         #endregion
 
     }
+
+    #region  碰觸到粒子 摧毀粒子+射出物件
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "hikari")
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                Destroy(other.gameObject);
+                Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
+                animePlayer.SetTrigger("Attack");
+                print("攻擊一次");
+            }
+        }
+    }
+
+    #endregion
+
+
+    #endregion
+
+    #region 方法
+
+    #region 跳躍方法
+    void JumpOnGround()
+    {
+        if (groundCheck)
+        {
+            rigidHas.AddForce(new Vector2(0, ySpeed), ForceMode.Impulse);
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "ground")
+        {
+            groundCheck = false;
+            isJumpping = true;
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.tag == "ground")
+        {
+            groundCheck = true;
+            isJumpping = false;
+            animePlayer.SetInteger("JumpInt", 0);
+        }
+    }
+    #endregion
+    #endregion
+
+
 }
 
 

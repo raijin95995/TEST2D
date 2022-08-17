@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MonsterCtrl : MonoBehaviour
 {
+
+    #region ¸ê®Æ
     public float delayTime = 1.0f;
     public int monsterHp = 10;
     public Animator animeMonster;
@@ -10,6 +12,7 @@ public class MonsterCtrl : MonoBehaviour
     public GameObject BornKill;
     public float hikariBornTime;
     public bool startTime;
+    #endregion
 
     void Start()
     {
@@ -27,7 +30,7 @@ public class MonsterCtrl : MonoBehaviour
         if (startTime)
         {
             hikariBornTime += Time.deltaTime;
-            if (hikariBornTime >= 3.0f)//
+            if (hikariBornTime >= 2.0f)//
             {
                 HikariBornB();   //
                 hikariBornTime = 0f;//
