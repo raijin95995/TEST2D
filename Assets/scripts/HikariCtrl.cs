@@ -9,7 +9,7 @@ public class HikariCtrl : MonoBehaviour
     void Start()
     {
         //MoveHikari();
-        Invoke("HikariDie", 1.9f);
+        Invoke("HikariDie", 0.6f);
     }
 
     // Update is called once per frame
