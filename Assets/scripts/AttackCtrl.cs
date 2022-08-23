@@ -15,6 +15,8 @@ public class AttackCtrl : MonoBehaviour
     public Animator animePlayer; //放入動畫
     bool groundCheck;  //確認是否觸地
     bool isJumpping;
+    public bool faceRight = true;
+
     #endregion
 
 
@@ -43,6 +45,7 @@ public class AttackCtrl : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            faceRight = true;
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
             isMoving = true;
             animePlayer.SetInteger("MoveInt", 1);
@@ -53,6 +56,7 @@ public class AttackCtrl : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            faceRight = false;
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
             isMoving = true;
             animePlayer.SetInteger("MoveInt", 1);
