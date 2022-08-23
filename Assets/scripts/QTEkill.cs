@@ -2,21 +2,60 @@ using UnityEngine;
 
 public class QTEkill : MonoBehaviour
 {
-    //public float timer;
-    public float killSpeed = 0.1f;
+    public float killSpeed = 0.5f;
+    private AttackCtrl attackCtrl;
+    private bool faceR = true;
+
+
     void Start()
     {
-
+        attackCtrl = GameObject.Find("ª±®a").GetComponent<AttackCtrl>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.position += new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
+        faceR = attackCtrl.faceRight;
+        if (faceR)
+        {
+            this.gameObject.transform.position += new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
+            Invoke("DestroyObject", 0.4f);
+
+        }
+        else
+        {
+            this.gameObject.transform.position -= new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
+            Invoke("DestroyObject", 0.4f);
+
+        }
+
+    }
+    
+    void DestroyObject()
+    {
+        Destroy(this.gameObject);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //void Update()
+    //{
+        //this.gameObject.transform.position += new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
         //timer -= Time.deltaTime;
         //if (timer <= 0) 
         //{
         //    Destroy(this.gameObject);
         //}
-    }
+
+
+
+    //}
 }

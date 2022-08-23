@@ -4,6 +4,7 @@ public class BornMonster : MonoBehaviour
 {
     public GameObject MonsterPrefab ;
     public float bornTime;
+    public MonsterCtrl monsterCtrl;
 
     // Start is called before the first frame update
     void Start()

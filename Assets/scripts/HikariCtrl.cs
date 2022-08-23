@@ -5,14 +5,14 @@ public class HikariCtrl : MonoBehaviour
     //public Transform monsterTarget;
     //public Transform hikariTarget;
 
-    private MonsterCtrl monsterCtrl;
+    //private MonsterCtrl monsterCtrl;
 
     // Start is called before the first frame update
     void Start()
     {
-        monsterCtrl = GameObject.Find("Slime 2").GetComponent<MonsterCtrl>();
+        //monsterCtrl = GameObject.Find("Slime 2").GetComponent<MonsterCtrl>();
         //MoveHikari();
-        Invoke("HikariDie", 5f);
+        Invoke("HikariDie", 0.5f);
     }
 
     // Update is called once per frame
@@ -25,12 +25,12 @@ public class HikariCtrl : MonoBehaviour
 
     void MoveHikari()
     {
-        Transform tra;
-        tra = monsterCtrl.hikariTarget;
-        if (this.transform != tra)
-        {
-            this.transform.position = tra.position ;  //設定出身位置
-        }
+       // Transform tra;
+        //tra = monsterCtrl.hikariTarget;
+        //if (this.transform != tra)
+        //{
+        //    this.transform.position = tra.position ;  //設定出身位置
+        //}
         
         //this.gameObject.transform.position += new Vector3(0, 0.5f , -1);  //設定出身位置
     }

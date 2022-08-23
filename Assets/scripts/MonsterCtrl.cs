@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using TMPro;
 
 public class MonsterCtrl : MonoBehaviour
@@ -20,18 +21,108 @@ public class MonsterCtrl : MonoBehaviour
     int ten = 10;
     float hp;
     float damage;
+    public bool faceL = true;
+    public float walkSpeed = 1;
+    public Transform monTra;
+    public Transform playerTra;
+
+    public enum Status { idle,walk,atk };
+    public Status status;
+    private bool canAtk = false;
+    private bool canWalk = true; 
+    public GameObject monAtkPerfab;
+    public float atkSpeed = 3f;
+
+    private AttackCtrl attackCtrl;
+    
+
+
     #endregion
 
     void Start()
     {
+        status = Status.idle;
+        attackCtrl = GameObject.Find("玩家").GetComponent<AttackCtrl>();
+        monTra = this.transform;
+        playerTra = GameObject.Find("玩家").transform;
         hp = monsterHp;
         //Instantiate(BornKill, hikariTarget.position, Quaternion.identity);
     }
 
     void Update()
     {
+        float deltaTime = Time.deltaTime;
 
-        //imgHp.fillAmount = monsterHp / ten ;
+
+
+        if (Mathf.Abs(monTra.position.z - playerTra.position.z) < 5f && canWalk == true)
+        {
+            canAtk = false;
+            status = Status.walk;
+        }
+            
+
+        if (Mathf.Abs(monTra.position.z - playerTra.position.z) >= 5f)
+            status = Status.idle;
+
+        if (Mathf.Abs(monTra.position.z - playerTra.position.z) < 1f && canAtk == true)
+        {
+            canWalk = false;
+            status = Status.atk;
+        }
+            
+
+
+
+        switch (status)
+        {
+            case Status.idle:
+                animeMonster.SetTrigger("Stop");
+                break;
+            case Status.walk:
+                if(monTra.position.z >= playerTra.position.z)
+                {
+                    //monTra.LookAt(playerTra);
+
+                    faceL = true;
+                    monTra.position -= new Vector3(0, 0, walkSpeed * deltaTime);
+                    animeMonster.SetTrigger("Walk");
+
+                    if (transform.eulerAngles.y < 179)   //向左旋轉
+                    {
+                        transform.Rotate(0, 180, 0);
+                    }
+                }
+                else 
+                {
+                    //monTra.LookAt(playerTra);
+                    faceL = false;
+                    monTra.position += new Vector3(0, 0, walkSpeed * deltaTime);
+                    animeMonster.SetTrigger("Walk");
+
+                    if (transform.eulerAngles.y >= 0 || transform.eulerAngles.y >= 179)  //向右旋轉
+                    {
+                        transform.Rotate(0, -180, 0);
+                    }
+                }
+
+                break;
+
+            case Status.atk:
+
+                animeMonster.SetTrigger("Atk");
+
+                if (canAtk)
+                {
+                    canAtk = false;
+                    Invoke("atktest", atkSpeed);  //攻速
+                }
+                
+              
+                break;
+        }
+
+        
         if (hp <= 0)
         {
             animeMonster.SetTrigger("Die");
@@ -68,6 +159,25 @@ public class MonsterCtrl : MonoBehaviour
         }
         
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            canWalk = false;
+            canAtk = true;
+            print(Mathf.Abs(monTra.position.z - playerTra.position.z));
+            //status = Status.atk;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            canAtk = false;
+            canWalk = true;
+        }
+    }
 
     void GetHit()
     {
@@ -82,12 +192,11 @@ public class MonsterCtrl : MonoBehaviour
 
     void GetDie()
     {
-
         Debug.Log("碰到KILL");
         hp -= 10;
     }
 
-    void MonsterDie()
+    void MonsterDie()   //跑死亡動畫用
     {
         Destroy(this.gameObject);
     }
@@ -116,6 +225,30 @@ public class MonsterCtrl : MonoBehaviour
 
     }
 
+
+    private IEnumerator Atk()
+    {
+        
+        for (int i = 0; i < 1; i++)
+        {
+            animeMonster.SetTrigger("Atk");
+            Instantiate(monAtkPerfab, this.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(atkSpeed);
+        }
+        
+
+    }
+
+    void atktest()
+    {
+        
+            animeMonster.SetTrigger("Atk");
+            canAtk = true;
+            Instantiate(monAtkPerfab, this.transform.position, Quaternion.identity);
+        
+    }
+
+    
 }
 
 

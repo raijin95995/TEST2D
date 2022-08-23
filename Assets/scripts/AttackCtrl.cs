@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using TMPro;
 [RequireComponent(typeof(Rigidbody))]
 
 public class AttackCtrl : MonoBehaviour
@@ -16,6 +19,13 @@ public class AttackCtrl : MonoBehaviour
     bool groundCheck;  //確認是否觸地
     bool isJumpping;
     public bool faceRight = true;
+    public Transform traPlayer;
+    public float playerHp = 100;
+
+    public GameObject playerUseHealth;
+    public Image imgPlayerHp;
+    private float hp;
+    private int damage;
 
     #endregion
 
@@ -25,6 +35,8 @@ public class AttackCtrl : MonoBehaviour
     void Start()
     {
         rigidHas = this.gameObject.GetComponent<Rigidbody>();
+        hp = playerHp;
+        imgPlayerHp.fillAmount = hp / playerHp;
     }
 
 
@@ -49,7 +61,7 @@ public class AttackCtrl : MonoBehaviour
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
             isMoving = true;
             animePlayer.SetInteger("MoveInt", 1);
-            if (transform.eulerAngles.y >= 0 || transform.eulerAngles.y >= 179)
+            if (transform.eulerAngles.y >= 0 || transform.eulerAngles.y >= 179)  //向右走
             {
                 transform.Rotate(0, -180, 0);
             }
@@ -60,7 +72,7 @@ public class AttackCtrl : MonoBehaviour
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
             isMoving = true;
             animePlayer.SetInteger("MoveInt", 1);
-            if (transform.eulerAngles.y < 179)
+            if (transform.eulerAngles.y < 179)   //向左走
             {
                 transform.Rotate(0, 180, 0);
             }
@@ -91,6 +103,15 @@ public class AttackCtrl : MonoBehaviour
 
         #endregion
 
+
+
+        if (hp <= 0)
+        {
+            animePlayer.SetTrigger("Die");
+            Invoke("Die" , 1.5f);
+        }
+
+
     }
 
     #region  碰觸到粒子 摧毀粒子+射出物件
@@ -102,9 +123,21 @@ public class AttackCtrl : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 Destroy(other.gameObject);
-                Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
-                animePlayer.SetTrigger("Attack");
-                print("攻擊一次");
+                if(faceRight)
+                {
+                    //Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
+                    Instantiate(killPerfab, this.transform.position, Quaternion.identity);
+                    animePlayer.SetTrigger("Attack");
+                    //print("必死攻擊一次");
+                }
+                else
+                {
+                    //Instantiate(killPerfab, this.transform.position -= new Vector3(0, 0, 0.01f), Quaternion.identity);
+                    Instantiate(killPerfab, this.transform.position, Quaternion.identity);
+                    animePlayer.SetTrigger("Attack");
+                    //print("必死攻擊一次");
+                }
+
             }
         }
     }
@@ -146,6 +179,28 @@ public class AttackCtrl : MonoBehaviour
     #endregion
     #endregion
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "monsterAtk")
+        {
+            GetHit();
+            print(hp);
+        }
+    }
+
+    void GetHit()
+    {
+        damage = 10;
+        hp -= 10;
+        imgPlayerHp.fillAmount = hp / playerHp;
+
+    }
+
+    void Die()
+    {
+        Destroy(this.gameObject);
+
+    }
 
 }
 
