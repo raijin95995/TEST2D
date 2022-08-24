@@ -24,7 +24,10 @@ public class AttackCtrl : MonoBehaviour
 
     public GameObject playerUseHealth;
     public Image imgPlayerHp;
+    public Image imgPlayerHpRed;
+    //public Image imgPlayerCrazy;
     private float hp;
+    private float playerCrazyCount;
     private int damage;
 
     #endregion
@@ -108,7 +111,7 @@ public class AttackCtrl : MonoBehaviour
         if (hp <= 0)
         {
             animePlayer.SetTrigger("Die");
-            Invoke("Die" , 1.5f);
+            Invoke("Die" , 1.5f); //跑完動畫再刪除
         }
 
 
@@ -195,6 +198,7 @@ public class AttackCtrl : MonoBehaviour
         damage = 10;
         hp -= 10;
         imgPlayerHp.fillAmount = hp / playerHp;
+        imgPlayerHpRed.fillAmount = hp / playerHp;
 
     }
 

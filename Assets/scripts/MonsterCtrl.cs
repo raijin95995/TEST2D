@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Events;
 using TMPro;
 
 public class MonsterCtrl : MonoBehaviour
@@ -36,7 +37,9 @@ public class MonsterCtrl : MonoBehaviour
     public bool isDead = false ;
 
     private AttackCtrl attackCtrl;
-    
+
+    public UnityEvent onNormalAtk;
+
 
 
     #endregion
@@ -164,6 +167,8 @@ public class MonsterCtrl : MonoBehaviour
         {
             GetHit();
             Destroy(other.gameObject);
+            onNormalAtk.Invoke();
+        
         }
         
     }
