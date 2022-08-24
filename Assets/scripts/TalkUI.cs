@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -21,7 +19,7 @@ public class TalkUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (talkMessage.activeSelf && Input.GetKeyDown(KeyCode.R))
+        if (talkMessage.activeSelf && Input.GetKeyDown(KeyCode.Q))
         {
             talkUI.SetActive(true);
             Invoke("DisplayUI", 6.0f);

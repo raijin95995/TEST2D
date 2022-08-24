@@ -127,6 +127,7 @@ public class AttackCtrl : MonoBehaviour
                 {
                     //Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
                     Instantiate(killPerfab, this.transform.position, Quaternion.identity);
+                    this.gameObject.transform.position += new Vector3(0, 0, 1.5f);
                     animePlayer.SetTrigger("Attack");
                     //print("必死攻擊一次");
                 }
@@ -134,6 +135,7 @@ public class AttackCtrl : MonoBehaviour
                 {
                     //Instantiate(killPerfab, this.transform.position -= new Vector3(0, 0, 0.01f), Quaternion.identity);
                     Instantiate(killPerfab, this.transform.position, Quaternion.identity);
+                    this.gameObject.transform.position -= new Vector3(0, 0, 1.5f);
                     animePlayer.SetTrigger("Attack");
                     //print("必死攻擊一次");
                 }

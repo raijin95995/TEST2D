@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class QTEkill : MonoBehaviour
 {
-    public float killSpeed = 0.5f;
+    public float killSpeed = 1f;
     private AttackCtrl attackCtrl;
     private bool faceR = true;
 

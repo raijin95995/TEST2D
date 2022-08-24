@@ -7,7 +7,7 @@ public class MonsterCtrl : MonoBehaviour
 {
 
     #region 資料
-    public float delayTime = 1.0f;
+    public float delayTime = 2.0f;
     public int monsterHp = 10;
     public Animator animeMonster;
     public Transform hikariTarget;
@@ -22,7 +22,7 @@ public class MonsterCtrl : MonoBehaviour
     float hp;
     float damage;
     public bool faceL = true;
-    public float walkSpeed = 1;
+    public float walkSpeed = 0.5f;
     public Transform monTra;
     public Transform playerTra;
 
@@ -32,6 +32,8 @@ public class MonsterCtrl : MonoBehaviour
     private bool canWalk = true; 
     public GameObject monAtkPerfab;
     public float atkSpeed = 3f;
+
+    public bool isDead = false ;
 
     private AttackCtrl attackCtrl;
     
@@ -80,7 +82,7 @@ public class MonsterCtrl : MonoBehaviour
                 animeMonster.SetTrigger("Stop");
                 break;
             case Status.walk:
-                if(monTra.position.z >= playerTra.position.z)
+                if(monTra.position.z >= playerTra.position.z && isDead == false)
                 {
                     //monTra.LookAt(playerTra);
 
@@ -93,7 +95,7 @@ public class MonsterCtrl : MonoBehaviour
                         transform.Rotate(0, 180, 0);
                     }
                 }
-                else 
+                else if(isDead == false)
                 {
                     //monTra.LookAt(playerTra);
                     faceL = false;
@@ -125,8 +127,13 @@ public class MonsterCtrl : MonoBehaviour
         
         if (hp <= 0)
         {
+            status = Status.idle;
+            imgHp.fillAmount = 0f ;
+            isDead = true; 
+            canAtk = false;
+            canWalk = false;
             animeMonster.SetTrigger("Die");
-            Invoke("MonsterDie", delayTime);
+            Invoke("MonsterDie", 1.8f);  //延遲死亡給動畫
         }
 
         if (startTime)
@@ -150,6 +157,7 @@ public class MonsterCtrl : MonoBehaviour
         if (other.gameObject.tag == "kill")
         {
             GetDie();
+            status = Status.idle;
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "atk")
@@ -161,7 +169,7 @@ public class MonsterCtrl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "player" && hp >0)
         {
             canWalk = false;
             canAtk = true;
@@ -172,7 +180,7 @@ public class MonsterCtrl : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "player" && hp > 0)
         {
             canAtk = false;
             canWalk = true;

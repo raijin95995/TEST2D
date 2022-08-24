@@ -12,7 +12,7 @@ public class HikariCtrl : MonoBehaviour
     {
         //monsterCtrl = GameObject.Find("Slime 2").GetComponent<MonsterCtrl>();
         //MoveHikari();
-        Invoke("HikariDie", 0.5f);
+        Invoke("HikariDie", 1.2f);
     }
 
     // Update is called once per frame
