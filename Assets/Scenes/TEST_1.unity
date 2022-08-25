@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   xSpeed: 0.01
   ySpeed: 7.5
   downSpeed: 2
-  zSpeed: 0.08
+  zSpeed: 0.02
   animePlayer: {fileID: 791552279}
   faceRight: 1
   traPlayer: {fileID: 0}
@@ -1371,6 +1371,7 @@ MonoBehaviour:
   playerUseHealth: {fileID: 834276640}
   imgPlayerHp: {fileID: 725140378}
   imgPlayerHpRed: {fileID: 612391474}
+  isCrazy: 1
 --- !u!95 &791552279 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9036980633323257398, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}

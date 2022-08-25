@@ -29,6 +29,11 @@ public class AttackCtrl : MonoBehaviour
     private float hp;
     private float playerCrazyCount;
     private int damage;
+    public bool isCrazy = false;
+    private SystemCrazy systemCrazy;
+    public enum Status { idle, dead ,crazy};
+
+
 
     #endregion
 
@@ -40,6 +45,7 @@ public class AttackCtrl : MonoBehaviour
         rigidHas = this.gameObject.GetComponent<Rigidbody>();
         hp = playerHp;
         imgPlayerHp.fillAmount = hp / playerHp;
+        systemCrazy = GameObject.Find("畫面UI").GetComponent<SystemCrazy>();
     }
 
 
@@ -110,10 +116,16 @@ public class AttackCtrl : MonoBehaviour
 
         if (hp <= 0)
         {
+            imgPlayerHpRed.gameObject.SetActive(false);
             animePlayer.SetTrigger("Die");
-            Invoke("Die" , 1.5f); //跑完動畫再刪除
+            Invoke("Die", 1.5f);            //跑完動畫再刪除
         }
 
+
+        
+
+        IsCrazy();
+        //StartCoroutine(CrazyHpLoss());
 
     }
 
@@ -126,7 +138,7 @@ public class AttackCtrl : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 Destroy(other.gameObject);
-                if(faceRight)
+                if (faceRight)
                 {
                     //Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
                     Instantiate(killPerfab, this.transform.position, Quaternion.identity);
@@ -186,7 +198,7 @@ public class AttackCtrl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "monsterAtk")
+        if (other.gameObject.tag == "monsterAtk")
         {
             GetHit();
             print(hp);
@@ -208,6 +220,39 @@ public class AttackCtrl : MonoBehaviour
 
     }
 
+    //update 放入 IsCrazy()  但是每次都光速流血  如何等待?
+
+    private void IsCrazy()   //判斷是否暴走
+    {
+        
+        if (imgPlayerHpRed.gameObject.activeSelf && isCrazy == true )    //UI上的暴走被啟用
+        {
+            isCrazy = false;
+            StartCoroutine(CrazyHpLoss());
+
+        }
+
+
+    }
+    private IEnumerator CrazyHpLoss()
+    {
+        
+        for (int i = 0 ; i < 10; i++)
+        {
+            hp -= 2 ;
+            imgPlayerHp.fillAmount = hp / playerHp;         //原始血條
+            imgPlayerHpRed.fillAmount = hp / playerHp;      //紅色血條
+            Debug.Log("暴走流血" + hp);
+            yield return new WaitForSeconds(0.5f);             //
+        }
+
+        systemCrazy.playerCrazyCount -= 50;
+        imgPlayerHpRed.gameObject.SetActive(false);
+        print("我關的拉");
+
+
+
+    }
 }
 
 
