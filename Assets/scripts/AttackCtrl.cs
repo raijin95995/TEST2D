@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 
 public class AttackCtrl : MonoBehaviour
@@ -31,7 +32,9 @@ public class AttackCtrl : MonoBehaviour
     private int damage;
     public bool isCrazy = false;
     private SystemCrazy systemCrazy;
-    public enum Status { idle, dead ,crazy};
+    public enum Status { normal, crazy };
+    public Status status;
+    public bool isDead = false;
 
 
 
@@ -51,6 +54,21 @@ public class AttackCtrl : MonoBehaviour
 
     void Update()
     {
+
+        switch (status)
+        {
+            case Status.crazy:
+                ySpeed = 20f;  //跳躍高度
+                downSpeed = 3.5f;  //下墜速度
+                zSpeed = 0.2f;   //移動速度
+                break;
+            case Status.normal:
+                ySpeed = 7.5f;  //跳躍高度
+                downSpeed = 3.5f;  //下墜速度
+                zSpeed = 0.1f;   //移動速度
+                break;
+
+        }
         //anime.SetInteger("AttackInt", 0);
         bool isMoving = false;
         if (Input.GetKeyDown(KeyCode.Space))
@@ -122,7 +140,7 @@ public class AttackCtrl : MonoBehaviour
         }
 
 
-        
+
 
         IsCrazy();
         //StartCoroutine(CrazyHpLoss());
@@ -203,6 +221,11 @@ public class AttackCtrl : MonoBehaviour
             GetHit();
             print(hp);
         }
+        if (other.gameObject.tag == "portal")
+        {
+            SceneManager.LoadScene("02");
+        }
+
     }
 
     void GetHit()
@@ -217,6 +240,7 @@ public class AttackCtrl : MonoBehaviour
     void Die()
     {
         Destroy(this.gameObject);
+        isDead = true;
 
     }
 
@@ -224,22 +248,24 @@ public class AttackCtrl : MonoBehaviour
 
     private void IsCrazy()   //判斷是否暴走
     {
+
         
-        if (imgPlayerHpRed.gameObject.activeSelf && isCrazy == true )    //UI上的暴走被啟用
+        if (imgPlayerHpRed.gameObject.activeSelf && isCrazy == true)    //UI上的暴走被啟用
         {
+            status = Status.crazy;
             isCrazy = false;
             StartCoroutine(CrazyHpLoss());
-
+            
         }
 
 
     }
     private IEnumerator CrazyHpLoss()
     {
-        
-        for (int i = 0 ; i < 10; i++)
+
+        for (int i = 0; i < 10; i++)
         {
-            hp -= 2 ;
+            hp -= 2;
             imgPlayerHp.fillAmount = hp / playerHp;         //原始血條
             imgPlayerHpRed.fillAmount = hp / playerHp;      //紅色血條
             Debug.Log("暴走流血" + hp);
@@ -249,6 +275,7 @@ public class AttackCtrl : MonoBehaviour
         systemCrazy.playerCrazyCount -= 50;
         imgPlayerHpRed.gameObject.SetActive(false);
         print("我關的拉");
+        status = Status.normal;
 
 
 

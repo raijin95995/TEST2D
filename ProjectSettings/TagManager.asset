@@ -11,6 +11,7 @@ TagManager:
   - talk
   - player
   - monsterAtk
+  - portal
   layers:
   - Default
   - TransparentFX

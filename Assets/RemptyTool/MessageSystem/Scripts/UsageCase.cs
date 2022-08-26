@@ -8,18 +8,18 @@ using TMPro;
 public class UsageCase : MonoBehaviour
 {
     private ES_MessageSystem msgSys;
-    public UnityEngine.UI.Text uiText;
-    public TextMeshProUGUI uiTextTMP;
+    //public UnityEngine.UI.Text uiText;
     public TextAsset textAsset;
+    public TextMeshProUGUI uiText;
     private List<string> textList = new List<string>();
     private int textIndex = 0;
 
     void Start()
     {
         msgSys = this.GetComponent<ES_MessageSystem>();
-        if (uiTextTMP == null)
+        if (uiText == null)
         {
-            Debug.LogError("uiTextTMP Component not assign.");
+            Debug.LogError("UIText Component not assign.");
         }
         else
             ReadTextDataFromAsset(textAsset);
@@ -65,7 +65,7 @@ public class UsageCase : MonoBehaviour
         //If the message is complete, stop updating text.
         if (msgSys.IsCompleted == false)
         {
-            uiTextTMP.text = msgSys.text;
+            uiText.text = msgSys.text;
         }
 
         //Auto update from textList.

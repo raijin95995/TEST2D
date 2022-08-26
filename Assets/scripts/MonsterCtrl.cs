@@ -39,6 +39,7 @@ public class MonsterCtrl : MonoBehaviour
     private AttackCtrl attackCtrl;
 
     public UnityEvent onNormalAtk;
+    public UnityEvent onDead;
 
 
 
@@ -136,6 +137,7 @@ public class MonsterCtrl : MonoBehaviour
             canAtk = false;
             canWalk = false;
             animeMonster.SetTrigger("Die");
+            onDead.Invoke();
             Invoke("MonsterDie", 1.8f);  //延遲死亡給動畫
         }
 

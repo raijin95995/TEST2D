@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SystemCrazy : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SystemCrazy : MonoBehaviour
     public float playerCrazyTotal = 100;
     private MonsterCtrl monsterCtrl;
     private AttackCtrl attackCtrl;
+    public Image redScene;
 
 
     void Start()
@@ -46,19 +48,53 @@ public class SystemCrazy : MonoBehaviour
         {
             attackCtrl.imgPlayerHpRed.gameObject.SetActive(true);
             print("我打開的");
+            redScene.gameObject.SetActive(true);
+            StartCoroutine(CrazySceneAlpha());
             //attackCtrl.isCrazy = true;
         }
+        if (playerCrazyCount != playerCrazyTotal)
+        {
+            
+            redScene.gameObject.SetActive(false);
+            
+        }
+
     }
 
     //void DownCrazy()
     //{
-       // if (playerCrazyCount != playerCrazyTotal )
-       // {
-        //    attackCtrl.imgPlayerHpRed.gameObject.SetActive(false);
-       //     print("我關閉的");
-       // }
+    // if (playerCrazyCount != playerCrazyTotal )
+    // {
+    //    attackCtrl.imgPlayerHpRed.gameObject.SetActive(false);
+    //     print("我關閉的");
+    // }
     //}
 
+
+    private IEnumerator CrazySceneAlpha()
+    {
+        for (int i = 0; i < Mathf.Infinity; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                redScene.color -= new Color(0, 0, 0, 0.05f);
+                yield return new WaitForSeconds(0.02f);
+               // print(redScene.color.ToString());
+
+            }
+
+            for (int k = 0; k < 20; k++)
+            {
+                redScene.color += new Color(0, 0, 0, 0.05f);
+                yield return new WaitForSeconds(0.02f);
+               // print(redScene.color.ToString());
+            }
+        }
+
+
+
+
+    }
 
 
 }
