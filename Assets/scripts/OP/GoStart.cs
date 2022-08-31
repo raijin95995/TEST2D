@@ -41,7 +41,7 @@ public class GoStart : MonoBehaviour
             {
                 testStart.color -= new Color(0, 0, 0, 0.05f);
                 yield return new WaitForSeconds(0.02f);
-                print(testStart.color.ToString());
+                //print(testStart.color.ToString());
 
             }
 
@@ -49,7 +49,7 @@ public class GoStart : MonoBehaviour
             {
                 testStart.color += new Color(0, 0, 0, 0.05f);
                 yield return new WaitForSeconds(0.02f);
-                print(testStart.color.ToString());
+                //print(testStart.color.ToString());
             }
         }
         
