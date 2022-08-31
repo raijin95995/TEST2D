@@ -21,14 +21,14 @@ public class AtkUseMonster : MonoBehaviour
         {
             this.gameObject.transform.position -= new Vector3(0, 0, atkSpeed * Time.deltaTime * 60);
 
-            Invoke("DestroyObject", 1f);
+            Invoke("DestroyObject", 0.5f);
 
         }
         else
         {
             this.gameObject.transform.position += new Vector3(0, 0, atkSpeed * Time.deltaTime * 60);
 
-            Invoke("DestroyObject", 1f);
+            Invoke("DestroyObject", 0.5f);
 
         }
 

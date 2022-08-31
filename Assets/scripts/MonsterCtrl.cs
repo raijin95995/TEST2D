@@ -137,7 +137,7 @@ public class MonsterCtrl : MonoBehaviour
             canAtk = false;
             canWalk = false;
             animeMonster.SetTrigger("Die");
-            onDead.Invoke();
+           //onDead.Invoke();
             Invoke("MonsterDie", 1.8f);  //延遲死亡給動畫
         }
 
@@ -213,7 +213,8 @@ public class MonsterCtrl : MonoBehaviour
 
     void MonsterDie()   //跑死亡動畫用
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     void HikariDie()
