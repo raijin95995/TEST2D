@@ -220,11 +220,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &40197667 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 321658463795138837, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
-  m_PrefabInstance: {fileID: 7455644982624573253}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &147353529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,6 +1473,7 @@ MonoBehaviour:
   imgPlayerHp: {fileID: 725140378}
   imgPlayerHpRed: {fileID: 612391474}
   isCrazy: 1
+  status: 0
   isDead: 0
 --- !u!95 &791552279 stripped
 Animator:
@@ -1867,7 +1863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1191002552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1881,7 +1877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 2081475924}
-  monster: {fileID: 40197667}
 --- !u!4 &1191002553
 Transform:
   m_ObjectHideFlags: 0
@@ -6815,8 +6810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f473aadc284ba8c458be59664c05f429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
-  monster: {fileID: 0}
+  arrow: {fileID: 2081475924}
 --- !u!1001 &1407102726
 PrefabInstance:
   m_ObjectHideFlags: 0

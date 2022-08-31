@@ -39,8 +39,8 @@ public class MonsterCtrl : MonoBehaviour
     private AttackCtrl attackCtrl;
 
     public UnityEvent onNormalAtk;
-    public UnityEvent onDead;
-
+    //public UnityEvent onDead;
+    private bool dieOnce = false;
 
 
     #endregion
@@ -137,8 +137,15 @@ public class MonsterCtrl : MonoBehaviour
             canAtk = false;
             canWalk = false;
             animeMonster.SetTrigger("Die");
-           //onDead.Invoke();
+           
             Invoke("MonsterDie", 1.8f);  //延遲死亡給動畫
+            dieOnce = true;
+            if(dieOnce=true)
+            {
+                dieOnce = false;
+                //onDead.Invoke();
+            }
+
         }
 
         if (startTime)
