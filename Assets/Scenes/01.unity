@@ -1464,7 +1464,7 @@ MonoBehaviour:
   xSpeed: 0.01
   ySpeed: 7.5
   downSpeed: 2
-  zSpeed: 0.01
+  zSpeed: 5
   animePlayer: {fileID: 791552279}
   faceRight: 1
   traPlayer: {fileID: 0}

@@ -58,14 +58,14 @@ public class AttackCtrl : MonoBehaviour
         switch (status)
         {
             case Status.crazy:
-                ySpeed = 20f;  //跳躍高度
+                ySpeed = 12f;  //跳躍高度
                 downSpeed = 3.5f;  //下墜速度
-                zSpeed = 0.2f;   //移動速度
+                zSpeed = 7f;   //移動速度
                 break;
             case Status.normal:
                 ySpeed = 7.5f;  //跳躍高度
                 downSpeed = 3.5f;  //下墜速度
-                zSpeed = 0.1f;   //移動速度
+                zSpeed = 5f;   //移動速度
                 break;
 
         }
@@ -85,7 +85,7 @@ public class AttackCtrl : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             faceRight = true;
-            this.gameObject.transform.position += new Vector3(0, 0, zSpeed);
+            this.gameObject.transform.position += new Vector3(0, 0, zSpeed * Time.deltaTime);
             isMoving = true;
             animePlayer.SetInteger("MoveInt", 1);
             if (transform.eulerAngles.y >= 0 || transform.eulerAngles.y >= 179)  //向右走
@@ -96,7 +96,7 @@ public class AttackCtrl : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             faceRight = false;
-            this.gameObject.transform.position += new Vector3(0, 0, -zSpeed);
+            this.gameObject.transform.position += new Vector3(0, 0, -zSpeed * Time.deltaTime);
             isMoving = true;
             animePlayer.SetInteger("MoveInt", 1);
             if (transform.eulerAngles.y < 179)   //向左走
