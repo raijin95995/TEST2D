@@ -1459,7 +1459,7 @@ MonoBehaviour:
   AttackPerfab: {fileID: 4880459588146884393, guid: e869c08d7c677fb4591d67922be1826c, type: 3}
   xSpeed: 0.01
   ySpeed: 7.5
-  downSpeed: 2
+  downSpeed: 1.5
   zSpeed: 0.01
   animePlayer: {fileID: 791552279}
   faceRight: 1

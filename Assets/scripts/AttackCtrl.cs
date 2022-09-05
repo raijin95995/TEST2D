@@ -14,7 +14,7 @@ public class AttackCtrl : MonoBehaviour
     Rigidbody rigidHas;  //抓取剛體
     public float xSpeed = 0.01f;
     public float ySpeed = 7.5f;  //跳躍高度
-    public float downSpeed = 3.5f;  //下墜速度
+    public float downSpeed = 1.5f;  //下墜速度
     public float zSpeed = 0.01f;   //移動速度
     public Animator animePlayer; //放入動畫
     bool groundCheck;  //確認是否觸地
