@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class QTEkill : MonoBehaviour
+public class QTEkillBIG : MonoBehaviour
 {
     public float killSpeed = 0.1f;
     private AttackCtrl attackCtrl;
@@ -18,13 +18,13 @@ public class QTEkill : MonoBehaviour
         if (faceR)
         {
             this.gameObject.transform.position += new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
-            Invoke("DestroyObject", 0.4f);
+            Invoke("DestroyObject", 10f);
 
         }
         else
         {
             this.gameObject.transform.position -= new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
-            Invoke("DestroyObject", 0.4f);
+            Invoke("DestroyObject", 10f);
 
         }
 

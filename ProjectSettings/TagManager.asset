@@ -12,6 +12,7 @@ TagManager:
   - player
   - monsterAtk
   - portal
+  - MUkill
   layers:
   - Default
   - TransparentFX

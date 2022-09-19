@@ -34,7 +34,8 @@ public class ChangeScene : MonoBehaviour
 
 		if (other.gameObject.tag == "player" && canGo)
 		{
-			SceneManager.LoadScene("02");
+			int nowSceneIndex = SceneManager.GetActiveScene().buildIndex;
+			SceneManager.LoadScene(nowSceneIndex + 1);
 		}
 
 
