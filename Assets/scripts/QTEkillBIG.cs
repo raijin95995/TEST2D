@@ -18,13 +18,13 @@ public class QTEkillBIG : MonoBehaviour
         if (faceR)
         {
             this.gameObject.transform.position += new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
-            Invoke("DestroyObject", 10f);
+            Invoke("DestroyObject", 5f);
 
         }
         else
         {
             this.gameObject.transform.position -= new Vector3(0, 0, killSpeed * Time.deltaTime * 60);
-            Invoke("DestroyObject", 10f);
+            Invoke("DestroyObject", 5f);
 
         }
 
