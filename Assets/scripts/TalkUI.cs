@@ -22,7 +22,7 @@ public class TalkUI : MonoBehaviour
         if (talkMessage.activeSelf && Input.GetKeyDown(KeyCode.Q))
         {
             talkUI.SetActive(true);
-            Invoke("DisplayUI", 15.0f);
+            Invoke("DisplayUI", 10.0f);
         }
     }
 

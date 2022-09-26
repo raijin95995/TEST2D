@@ -242,28 +242,29 @@ public class AttackCtrl : MonoBehaviour
     {
 
         multiKillGirl.gameObject.SetActive(true);
-        Transform traGirlOri = multiKillGirl.transform;
-        Transform traGirl = multiKillGirl.transform;
+        //Transform traGirlOri = multiKillGirl.transform;
+        RectTransform traGirl = multiKillGirl.GetComponent<RectTransform>();
         for (int i = 0; i < 3; i++)
         {
             traGirl.position += new Vector3(50, 0, 0);
 
             yield return new WaitForSeconds(0.01f);
         }
-        for (int j = 0; j < 15; j++)
+        for (int j = 0; j < 20; j++)
         {
-            traGirl.position += new Vector3(5, 0, 0);
+            traGirl.position += new Vector3(6, 0, 0);
 
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.03f);
         }
-        for (int k = 0; k < 4; k++)
+        for (int k = 0; k < 30; k++)
         {
-            traGirl.position += new Vector3(20, 0, 0);
+            traGirl.position += new Vector3(35, 0, 0);
 
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.01f);
         }
 
-        multiKillGirl.transform.position = new Vector3(-680, 0, 0);
+        yield return new WaitForSeconds(0.15f);
+        //multiKillGirl.transform.position = new Vector3(-680, 0, 0);
         multiKillGirl.gameObject.SetActive(false);
 
     }
