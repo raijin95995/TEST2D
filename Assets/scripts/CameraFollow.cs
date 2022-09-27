@@ -5,7 +5,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float smoothing;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -22,7 +22,7 @@ public class CameraFollow : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
+    
     void Update()
     {
         

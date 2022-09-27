@@ -46,6 +46,15 @@ public class MonsterCtrl : MonoBehaviour
 
 	public MultipleKill multipleKill;
 
+	//[SerializeField, Header("Z´¶§ð­µ®Ä")]
+	//private AudioClip soundZ;
+
+	private SEPack sePcak;
+
+	public GameObject killImagePrefab;
+
+
+
 	#endregion
 
 	void Start()
@@ -57,6 +66,8 @@ public class MonsterCtrl : MonoBehaviour
 		hp = monsterHp;
 		//Instantiate(BornKill, hikariTarget.position, Quaternion.identity);
 		multipleKill = GameObject.Find("MuKill").GetComponent<MultipleKill>();
+		sePcak = GameObject.Find("SE¥]").GetComponent<SEPack>();
+
 	}
 
 	void Update()
@@ -174,12 +185,17 @@ public class MonsterCtrl : MonoBehaviour
 	{
 		if (other.gameObject.tag == "kill")
 		{
+			GameObject killImage = killImagePrefab;
+			Instantiate(killImage, this.transform.position+new Vector3(2,0.5f,0), Quaternion.Euler(0,90,0));
+			SystemSound.instance.PlaySound(sePcak.soundA, new Vector2(0.7f, 1.5f));
 			GetDie();
 			status = Status.idle;
 			Destroy(other.gameObject);
+
 		}
 		if (other.gameObject.tag == "atk")
 		{
+			SystemSound.instance.PlaySound(sePcak.soundZ, new Vector2(0.7f, 1.5f));
 			GetHit();
 			Destroy(other.gameObject);
 			onNormalAtk.Invoke();

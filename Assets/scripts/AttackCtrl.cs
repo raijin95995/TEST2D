@@ -42,6 +42,12 @@ public class AttackCtrl : MonoBehaviour
     public MultipleKill multipleKill;
     public GameObject multipleKillPerfab; // 放入大型射出的秒殺物件
     public Image multiKillGirl;
+    public Image multiKillBack;
+
+    //[SerializeField, Header("Z普攻音效")]
+    //private AudioClip soundZ;
+
+    private SEPack sePcak;
 
     #endregion
 
@@ -56,7 +62,7 @@ public class AttackCtrl : MonoBehaviour
         systemCrazy = GameObject.Find("畫面UI").GetComponent<SystemCrazy>();
 
         multipleKill = GameObject.Find("MuKill").GetComponent<MultipleKill>();
-
+        sePcak = GameObject.Find("SE包").GetComponent<SEPack>();
     }
 
 
@@ -86,12 +92,14 @@ public class AttackCtrl : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
+            
             //Physics.gravity = new Vector3(0, 3.0F, 0);
             rigidHas.AddForce(new Vector2(0, -downSpeed), ForceMode.Force);
 
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            
             faceRight = true;
             this.gameObject.transform.position += new Vector3(0, 0, zSpeed * Time.deltaTime);
             isMoving = true;
@@ -103,6 +111,7 @@ public class AttackCtrl : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            
             faceRight = false;
             this.gameObject.transform.position += new Vector3(0, 0, -zSpeed * Time.deltaTime);
             isMoving = true;
@@ -114,6 +123,7 @@ public class AttackCtrl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))          //普通射出物件
         {
+            
             animePlayer.SetTrigger("AttackNormal");
             Instantiate(AttackPerfab, this.transform.position, Quaternion.identity);
         }
@@ -128,6 +138,7 @@ public class AttackCtrl : MonoBehaviour
 
                 ShowGirl();
 
+                SystemSound.instance.PlaySound(sePcak.soundU, new Vector2(0.7f, 1.5f));
                 if (faceRight)
                 {
                     //Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
@@ -233,7 +244,7 @@ public class AttackCtrl : MonoBehaviour
 
     void ShowGirl()
     {
-
+        multiKillBack.gameObject.SetActive(true);
         StartCoroutine(MoveGirl());
        
     }
@@ -246,7 +257,7 @@ public class AttackCtrl : MonoBehaviour
         RectTransform traGirl = multiKillGirl.GetComponent<RectTransform>();
         for (int i = 0; i < 3; i++)
         {
-            traGirl.position += new Vector3(50, 0, 0);
+            traGirl.position += new Vector3(60, 0, 0);
 
             yield return new WaitForSeconds(0.01f);
         }
@@ -258,14 +269,15 @@ public class AttackCtrl : MonoBehaviour
         }
         for (int k = 0; k < 30; k++)
         {
-            traGirl.position += new Vector3(35, 0, 0);
+            traGirl.position += new Vector3(50, 0, 0);
 
             yield return new WaitForSeconds(0.01f);
         }
 
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.12f);
         //multiKillGirl.transform.position = new Vector3(-680, 0, 0);
         multiKillGirl.gameObject.SetActive(false);
+        multiKillBack.gameObject.SetActive(false);
 
     }
 
@@ -304,6 +316,7 @@ public class AttackCtrl : MonoBehaviour
     {
         if (other.gameObject.tag == "monsterAtk")
         {
+            SystemSound.instance.PlaySound(sePcak.soundPlayerHited, new Vector2(0.7f, 1.5f));
             GetHit();
             print(hp);
         }
