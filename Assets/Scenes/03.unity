@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 4569ab2a281ae4d44bad65a84e094411, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1603dbd33be1cbf488e243b31b905c9b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.49731386, g: 0.5097649, b: 0.6386711, a: 1}
+  m_IndirectSpecularColor: {r: 0.36503407, g: 0.32368523, b: 0.5168514, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -531,6 +531,14 @@ PrefabInstance:
       propertyPath: monAtkPerfab
       value: 
       objectReference: {fileID: 6034678405596468268, guid: e6818697bf8cf00468d3acc89200ff72, type: 3}
+    - target: {fileID: 321195001857593125, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
+      propertyPath: atkImagePrefab
+      value: 
+      objectReference: {fileID: 1751268736947325481, guid: 7bb12f1f07b4731438c1fdf65599d317, type: 3}
+    - target: {fileID: 321195001857593125, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
+      propertyPath: killImagePrefab
+      value: 
+      objectReference: {fileID: 8602171307859347185, guid: 13ffe1fbbc9200f43ba587c113df81db, type: 3}
     - target: {fileID: 321658463795138837, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
       propertyPath: m_Name
       value: "\u9B54\u7269 (2)"
@@ -6619,15 +6627,15 @@ RectTransform:
   m_GameObject: {fileID: 812255688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 14.700001, y: 14.700001, z: 14.700001}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 13.5, y: 13.5, z: 10.9}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2098066261}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -680.00037, y: 0}
+  m_AnchoredPosition: {x: -680.00037, y: 30.58}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812255690
@@ -6918,15 +6926,15 @@ RectTransform:
   m_GameObject: {fileID: 915361118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 19.41, y: 19.41, z: 19.41}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 19.41, y: 12.8, z: 19.41}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2098066261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 35.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &915361120
@@ -6942,7 +6950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6953,7 +6961,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -7364,6 +7372,14 @@ PrefabInstance:
       propertyPath: monAtkPerfab
       value: 
       objectReference: {fileID: 6034678405596468268, guid: e6818697bf8cf00468d3acc89200ff72, type: 3}
+    - target: {fileID: 321195001857593125, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
+      propertyPath: atkImagePrefab
+      value: 
+      objectReference: {fileID: 1751268736947325481, guid: 7bb12f1f07b4731438c1fdf65599d317, type: 3}
+    - target: {fileID: 321195001857593125, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
+      propertyPath: killImagePrefab
+      value: 
+      objectReference: {fileID: 8602171307859347185, guid: 13ffe1fbbc9200f43ba587c113df81db, type: 3}
     - target: {fileID: 321658463795138837, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
       propertyPath: m_Name
       value: "\u9B54\u7269 (1)"
@@ -8483,7 +8499,7 @@ RectTransform:
   m_GameObject: {fileID: 1663393369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.02, y: 1.02, z: 1.02}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2010083374}
@@ -8491,7 +8507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.4, y: 6}
+  m_AnchoredPosition: {x: -2.01, y: 1.75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1663393371
@@ -8515,13 +8531,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b1383947d0771e44caab2cc1549c8574, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 1
+  m_FillAmount: 0.913
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1663393372
@@ -9928,7 +9944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 316456847047311161, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.81
+      value: 30.05
       objectReference: {fileID: 0}
     - target: {fileID: 316456847047311161, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9970,6 +9986,14 @@ PrefabInstance:
       propertyPath: monAtkPerfab
       value: 
       objectReference: {fileID: 6034678405596468268, guid: e6818697bf8cf00468d3acc89200ff72, type: 3}
+    - target: {fileID: 321195001857593125, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
+      propertyPath: atkImagePrefab
+      value: 
+      objectReference: {fileID: 1751268736947325481, guid: 7bb12f1f07b4731438c1fdf65599d317, type: 3}
+    - target: {fileID: 321195001857593125, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
+      propertyPath: killImagePrefab
+      value: 
+      objectReference: {fileID: 8602171307859347185, guid: 13ffe1fbbc9200f43ba587c113df81db, type: 3}
     - target: {fileID: 321658463795138837, guid: 0ea08b86a86950746ade416f168e7c49, type: 3}
       propertyPath: m_Name
       value: "\u9B54\u7269"

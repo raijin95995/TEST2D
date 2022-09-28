@@ -218,7 +218,7 @@ public class AttackCtrl : MonoBehaviour
                 {
                     //Instantiate(killPerfab, this.transform.position += new Vector3(0, 0, 0.01f), Quaternion.identity);
                     Instantiate(killPerfab, this.transform.position, Quaternion.identity);
-                    this.gameObject.transform.position += new Vector3(0, 0, 1.5f);
+                    this.gameObject.transform.position += new Vector3(0, 0, 3);
                     animePlayer.SetTrigger("Attack");
                     //print("必死攻擊一次");
                 }
@@ -226,7 +226,7 @@ public class AttackCtrl : MonoBehaviour
                 {
                     //Instantiate(killPerfab, this.transform.position -= new Vector3(0, 0, 0.01f), Quaternion.identity);
                     Instantiate(killPerfab, this.transform.position, Quaternion.identity);
-                    this.gameObject.transform.position -= new Vector3(0, 0, 1.5f);
+                    this.gameObject.transform.position -= new Vector3(0, 0, 3);
                     animePlayer.SetTrigger("Attack");
                     //print("必死攻擊一次");
                 }
@@ -264,14 +264,22 @@ public class AttackCtrl : MonoBehaviour
         for (int j = 0; j < 20; j++)
         {
             traGirl.position += new Vector3(6, 0, 0);
+            
 
             yield return new WaitForSeconds(0.03f);
         }
         for (int k = 0; k < 30; k++)
         {
             traGirl.position += new Vector3(50, 0, 0);
+           
 
             yield return new WaitForSeconds(0.01f);
+        }
+        for (int l = 0; l < 20; l++)
+        {
+            multiKillBack.color -= new Color(0, 0, 0, 0.1f);
+
+            yield return new WaitForSeconds(0.05f);
         }
 
         yield return new WaitForSeconds(0.12f);

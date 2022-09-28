@@ -52,6 +52,7 @@ public class MonsterCtrl : MonoBehaviour
 	private SEPack sePcak;
 
 	public GameObject killImagePrefab;
+	public GameObject atkImagePrefab;
 
 
 
@@ -186,7 +187,7 @@ public class MonsterCtrl : MonoBehaviour
 		if (other.gameObject.tag == "kill")
 		{
 			GameObject killImage = killImagePrefab;
-			Instantiate(killImage, this.transform.position+new Vector3(2,0.5f,0), Quaternion.Euler(0,90,0));
+			Instantiate(killImage, this.transform.position+new Vector3(2,-0.5f,0), Quaternion.Euler(0,270,27));
 			SystemSound.instance.PlaySound(sePcak.soundA, new Vector2(0.7f, 1.5f));
 			GetDie();
 			status = Status.idle;
@@ -195,6 +196,8 @@ public class MonsterCtrl : MonoBehaviour
 		}
 		if (other.gameObject.tag == "atk")
 		{
+			GameObject atkImage = atkImagePrefab;
+			Instantiate(atkImage, this.transform.position + new Vector3(2, 1, 0), Quaternion.Euler(0, 270, 0));
 			SystemSound.instance.PlaySound(sePcak.soundZ, new Vector2(0.7f, 1.5f));
 			GetHit();
 			Destroy(other.gameObject);
