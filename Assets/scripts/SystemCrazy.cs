@@ -14,6 +14,8 @@ public class SystemCrazy : MonoBehaviour
     private MonsterCtrl monsterCtrl;
     private AttackCtrl attackCtrl;
     public Image redScene;
+    public GameObject redHair1;
+    public GameObject redHair2;
 
 
     void Start()
@@ -49,6 +51,8 @@ public class SystemCrazy : MonoBehaviour
             attackCtrl.imgPlayerHpRed.gameObject.SetActive(true);
             print("我打開的");
             redScene.gameObject.SetActive(true);
+            redHair1.gameObject.SetActive(true);
+            redHair2.gameObject.SetActive(true);
             StartCoroutine(CrazySceneAlpha());
             //attackCtrl.isCrazy = true;
         }
@@ -56,7 +60,9 @@ public class SystemCrazy : MonoBehaviour
         {
             
             redScene.gameObject.SetActive(false);
-            
+            redHair1.gameObject.SetActive(false);
+            redHair2.gameObject.SetActive(false);
+
         }
 
     }
