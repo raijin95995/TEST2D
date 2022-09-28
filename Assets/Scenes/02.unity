@@ -257,6 +257,8 @@ MonoBehaviour:
   playerCrazyCount: 0
   playerCrazyTotal: 100
   redScene: {fileID: 1599433234}
+  oriHair1: {fileID: 1407102729}
+  oriHair2: {fileID: 1407102728}
   redHair1: {fileID: 1834344332}
   redHair2: {fileID: 2039187379}
 --- !u!114 &134689097
@@ -2774,6 +2776,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3380900436296473519, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3556123916713705338, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2875,6 +2881,16 @@ PrefabInstance:
 --- !u!4 &1407102727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3016251478481396045, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+  m_PrefabInstance: {fileID: 1407102726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1407102728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306117458494370794, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+  m_PrefabInstance: {fileID: 1407102726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1407102729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6549567833127347847, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
   m_PrefabInstance: {fileID: 1407102726}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1441467183

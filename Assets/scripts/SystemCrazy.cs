@@ -14,6 +14,8 @@ public class SystemCrazy : MonoBehaviour
     private MonsterCtrl monsterCtrl;
     private AttackCtrl attackCtrl;
     public Image redScene;
+    public GameObject oriHair1;
+    public GameObject oriHair2;
     public GameObject redHair1;
     public GameObject redHair2;
 
@@ -53,6 +55,8 @@ public class SystemCrazy : MonoBehaviour
             redScene.gameObject.SetActive(true);
             redHair1.gameObject.SetActive(true);
             redHair2.gameObject.SetActive(true);
+            oriHair1.gameObject.SetActive(false);
+            oriHair2.gameObject.SetActive(false);
             StartCoroutine(CrazySceneAlpha());
             //attackCtrl.isCrazy = true;
         }
@@ -62,6 +66,8 @@ public class SystemCrazy : MonoBehaviour
             redScene.gameObject.SetActive(false);
             redHair1.gameObject.SetActive(false);
             redHair2.gameObject.SetActive(false);
+            oriHair1.gameObject.SetActive(true);
+            oriHair2.gameObject.SetActive(true);
 
         }
 
